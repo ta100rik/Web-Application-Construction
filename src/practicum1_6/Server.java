@@ -1,4 +1,4 @@
-package practicum1_5;
+package practicum1_6;
 
 import java.net.ServerSocket;
 import java.net.Socket;

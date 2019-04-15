@@ -1,7 +1,8 @@
-package practicum1_5;
+package practicum1_6;
 
 import java.io.*;
-import java.net.*;
+import java.net.Socket;
+
 public class MyServlet extends Thread{
     private Socket socket;
     public MyServlet(Socket sock){
@@ -19,6 +20,7 @@ public class MyServlet extends Thread{
             String clientInput = bufferedReader.readLine();
             writer.println("HTTP/1.1 200 OK\n\n<h1>It works!</h1>");
             writer.println("");
+            Thread.sleep(10000);
 
 //            while(!clientInput.equals("")){
 //                System.out.println(clientInput);
