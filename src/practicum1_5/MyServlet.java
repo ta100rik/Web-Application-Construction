@@ -29,8 +29,6 @@ public class MyServlet extends Thread{
 
         }catch (IOException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 
