@@ -11,5 +11,19 @@
     <servlet-name>Dynamic Servlet</servlet-name>
     <url-pattern>/DynamicServlet</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Jersey Rest Service</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>firstapp.Jersey</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Jersey Rest Service</servlet-name>
+    <url-pattern>/Rest_Service/*</url-pattern>
+  </servlet-mapping>
   <display-name>Archetype Created Web Application</display-name>
 </web-app>
