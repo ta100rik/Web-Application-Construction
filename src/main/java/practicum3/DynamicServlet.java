@@ -15,7 +15,7 @@ public class DynamicServlet extends HttpServlet {
         String gedeeldorus = req.getParameter("gedeeldorus");
         String keerus = req.getParameter("keerus");
         Float getal1 = Float.parseFloat(req.getParameter("getal1"));
-        Float getal2 = Float.parseFloat(req.getParameter("getal1"));
+        Float getal2 = Float.parseFloat(req.getParameter("getal2"));
 
         if(plusus != null){
             res = getal1 + getal2;
