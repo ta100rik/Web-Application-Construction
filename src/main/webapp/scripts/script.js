@@ -17,6 +17,9 @@ function initPage(){
     document.getElementById("IP").innerText = json.ip;
     // console.log(json);
     getWheather(json);
+    document.getElementById("Stad").onclick = function () {
+        initPage();
+    }
 }
 
 function getWheather(json){
@@ -63,7 +66,6 @@ function loadCountries(){
                         <td>${i.Region}</td>
                         <td>${i.Surface}</td>
                         <td>${i.Population}</td>
-                               
                     </tr>`;
                 appendchild(html);
             }

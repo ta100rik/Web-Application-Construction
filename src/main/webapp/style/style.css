@@ -1,0 +1,10 @@
+html, body{
+    margin:0;
+    padding:0;
+    background-color:black;
+}
+tr:hover{
+    background-color:grey;
+    color:white;
+    cursor:pointer;
+}
