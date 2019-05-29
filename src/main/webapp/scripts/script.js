@@ -15,19 +15,49 @@ function initPage(){
     document.getElementById("Latitude").innerText = json.latitude;
     document.getElementById("Longitutde").innerText = json.longitude;
     document.getElementById("IP").innerText = json.ip;
-    // console.log(json);
-    getWheather(json);
     document.getElementById("Stad").onclick = function () {
         initPage();
+
     }
+    getWheather(json);
 }
 
 function getWheather(json){
-    let url = `http://api.openweathermap.org/data/2.5/weather?lat=${json.latitude}&lon=${json.longitude}&appid=5a0c9fe48ebd7415f3c6a10135f7b60c`;
-    let xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", url, false ); // false for synchronous request
-    xmlHttp.send( null );
-    let data = JSON.parse(xmlHttp.responseText);
+    // console.log(localStorage.getItem(json.country_name));
+    if(localStorage.getItem(json.country_name)=== null){
+        let date = new Date();
+        let url = `http://api.openweathermap.org/data/2.5/weather?lat=${json.latitude}&lon=${json.longitude}&appid=5a0c9fe48ebd7415f3c6a10135f7b60c`;
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", url, false ); // false for synchronous request
+        xmlHttp.send( null );
+        var data = JSON.parse(xmlHttp.responseText);
+        data["time"] = date.getTime();
+        localStorage.setItem(json.country_name, JSON.stringify(data));
+        console.log("setting and remote");
+    }else{
+
+        let localdata = JSON.parse(localStorage.getItem(json.country_name));
+        let date = new Date();
+        times = date.getTime();
+        if((times - localdata.time) > 600000){
+            let date = new Date();
+            let url = `http://api.openweathermap.org/data/2.5/weather?lat=${json.latitude}&lon=${json.longitude}&appid=5a0c9fe48ebd7415f3c6a10135f7b60c`;
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", url, false ); // false for synchronous request
+            xmlHttp.send( null );
+            var data = JSON.parse(xmlHttp.responseText);
+            data["time"] = date.getTime();
+            localStorage.setItem(json.country_name, JSON.stringify(data));
+        }else{
+            var data = localdata;
+        }
+        // let url = `http://api.openweathermap.org/data/2.5/weather?lat=${json.latitude}&lon=${json.longitude}&appid=5a0c9fe48ebd7415f3c6a10135f7b60c`;
+        // let xmlHttp = new XMLHttpRequest();
+        // xmlHttp.open( "GET", url, false ); // false for synchronous request
+        // xmlHttp.send( null );
+        // console.log(data);
+        // console.log("local");
+    }
     // console.log(data);
     //appid
     document.getElementById("Temperatuur").innerText = data.main.temp;
@@ -48,7 +78,8 @@ function appendchild(html){
         trList[i].onclick = function(){
             let object  = {};
             object.longitude    =  trList[i].getAttribute("data-long");
-            object.latitude      = trList[i].getAttribute("data-lat");
+            object.country_name =  trList[i].getAttribute("data-country");
+            object.latitude     = trList[i].getAttribute("data-lat");
             getWheather(object);
         };
     }
@@ -60,7 +91,7 @@ function loadCountries(){
         .then(data => {
             for (let i of data){
                 let html = `
-                    <tr data-long="${i.Longtitude}" data-lat="${i.Latitude}">
+                    <tr data-country="${i.Name}" data-long="${i.Longtitude}" data-lat="${i.Latitude}">
                         <td>${i.Name}</td>
                         <td>${i.Capital}</td>
                         <td>${i.Region}</td>
