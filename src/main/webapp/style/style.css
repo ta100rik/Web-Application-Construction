@@ -10,7 +10,7 @@ tr:hover{
     cursor:pointer;
 }
 
-table{
+#countryList{
     width: 100%;
     overflow-x:auto;
 }
@@ -32,6 +32,17 @@ table{
     color:brown;
     text-align: center;
     padding:10px;
+}
+#modal, #modal2{
+    padding: 30px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-45%, -50%);
+}
+#modal *, #modal2 *{
+    float:left;
 }
 .col-md-1 {width: 8.33%;}
 .col-md-2 {width: 16.66%;}

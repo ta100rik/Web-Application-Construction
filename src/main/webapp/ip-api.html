@@ -75,6 +75,10 @@
             </div>
         </div>
         <div id="countryList">
+
+            <div class="row">
+                <button type="button" onclick="showinsert()">create</button>
+            </div>
             <table>
                 <thead>
                     <th>land</th>
@@ -87,6 +91,76 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div id="modal" style="display:none">
+        <form id="updateform">
+            <div class="row">
+                <label class="col-md-3">code</label>
+                <input type="text" class="col-md-9" id="code" name="code">
+            </div>
+            <div class="row">
+                <label class="col-md-3">Land</label>
+                <input type="text" class="col-md-9" id="landval" name="landval">
+            </div>
+
+            <div class="row">
+                <label class="col-md-3">Hoofdstad</label>
+                <input type="text" class="col-md-9" id="Hoofdstad" name="Hoofdstad">
+            </div>
+
+            <div class="row">
+                <label class="col-md-3">Regio</label>
+                <input type="text" class="col-md-9" id="Regio" name="Regio">
+            </div>
+
+            <div class="row">
+                <label class="col-md-3">Oppervlakte</label>
+                <input type="text" class="col-md-9" id="Oppervlakte" name="Oppervlakte">
+            </div>
+
+            <div class="row">
+                <label class="col-md-3">Inwoners</label>
+                <input type="text" class="col-md-9" id="Inwoners" name="Inwoners">
+            </div>
+            <div class="row">
+                <button type="button" onclick="update()">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div id="modal2" style="display:none">
+        <form id="insertform">
+            <div class="row">
+                <label class="col-md-3">code</label>
+                <input type="text" class="col-md-9" name="code">
+            </div>
+            <div class="row">
+                <label class="col-md-3">Land</label>
+                <input type="text" class="col-md-9"  name="landval">
+            </div>
+
+            <div class="row">
+                <label class="col-md-3">Hoofdstad</label>
+                <input type="text" class="col-md-9"  name="Hoofdstad">
+            </div>
+
+            <div class="row">
+                <label class="col-md-3">Regio</label>
+                <input type="text" class="col-md-9" name="Regio">
+            </div>
+
+            <div class="row">
+                <label class="col-md-3">Oppervlakte</label>
+                <input type="text" class="col-md-9" name="Oppervlakte">
+            </div>
+
+            <div class="row">
+                <label class="col-md-3">Inwoners</label>
+                <input type="text" class="col-md-9" name="Inwoners">
+            </div>
+            <div class="row">
+                <button type="button" onclick="insert()">Submit</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>
