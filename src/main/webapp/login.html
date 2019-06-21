@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+    <form id="loginForm">
+        <label></label><input type="text" value="zyad" name="user">
+        <input type="password" value="sd" name="password">
+        <button type="button" id="login_button">Login</button>
+    </form>
+<script>
+    window.onload = function(){
+      document.getElementById("login_button").addEventListener("click",login);
+    };
+    function login(){
+        const element = document.getElementById("loginForm");
+        const formData      = new FormData(element);
+        const encodeData    = new URLSearchParams(formData);
+        fetch("Rest_Service/login", {
+            method: 'POST',
+            body: encodeData
+        }).then(function(response) {
+            if(response.status == 200){
+
+                return response.text();
+            }else{
+                console.log("bad login");
+            }
+        })
+            .then(function(myJson) {
+                if(myJson){
+                    localStorage.setItem("token",myJson)
+                    window.location.href  = "index.html";
+                }
+            });
+    }
+
+</script>
 </body>
 </html>

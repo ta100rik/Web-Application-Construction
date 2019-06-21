@@ -95,7 +95,7 @@ function loadCountries(){
     let selector = document.getElementById("countries");
     // console.log(html);
     selector.innerHTML  = "";
-    fetch("/api/test")
+    fetch("/api2/test")
         .then(response => response.json())
         .then(data => {
             for (let i of data){
@@ -116,7 +116,7 @@ function loadCountries(){
 
 function remove(id){
     console.log(id);
-    fetch("api/test" + "/" + id, {
+    fetch("api2/test" + "/" + id, {
         method: 'DELETE'
     }).then(() => {
         document.getElementById(id).remove();
@@ -153,7 +153,7 @@ function update() {
     console.log(encodeData);
     console.log(encodeData.values());
 
-    fetch("api/test/", {
+    fetch("api2/test/", {
         method: 'PUT',
         body: encodeData
     }).then(data =>hidden(data,"modal"))
@@ -164,7 +164,7 @@ function insert() {
     const formData      = new FormData(element);
     const encodeData    = new URLSearchParams(formData);
 
-    fetch("api/test/", {
+    fetch("api2/test/", {
         method: 'POST',
         body: encodeData
     }).then(data => hidden(data,"modal2"))

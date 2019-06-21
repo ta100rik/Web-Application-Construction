@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<div class="id">
+
+</div>
 </body>
+<script>
+    var fetchoptions = {
+        method: 'GET',
+        headers : {
+            'Authorization': 'Bearer ' +  localStorage.getItem("token")
+        }
+    }
+    fetch("Rest_Service/login/test" , fetchoptions)
+        .then(function(response) {
+            if (response.ok) {
+               console.log("yes");
+            } else console.log("nope");
+        })
+        .catch(error => console.log(error));
+
+</script>
 </html>
